@@ -4,25 +4,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- WP_HEAD() START -->
-  <link rel="preload" as="style" href="static/css/css.css" />
-  <link rel="stylesheet" href="static/css/css.css" />
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
-  <!-- Custom Styles -->
-  <link rel="stylesheet" href="style.css">
-  <!-- Google Fonts - Cairo -->
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+  <!-- 优化: 添加关键CSS内联 -->
   <style>
+    /* 首屏关键样式内联 */
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    
+    .mainHero {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .primary-header {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .coreNavigation {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    /* 保留现有样式 */
     img:is([sizes='auto' i], [sizes^='auto,' i]) {
       contain-intrinsic-size: 3000px 1500px;
     }
   </style>
+  
+  <!-- 优化: 预连接到关键域名 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  
+  <!-- WP_HEAD() START -->
+  <!-- 优化: 改进CSS加载方式，使用load事件 -->
+  <link rel="preload" as="style" href="static/css/css.css" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="static/css/css.css" /></noscript>
+  
+  <!-- 优化: 异步加载非关键JS -->
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com" async></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js" async></script>
+  
+  <!-- 优化: 延迟加载字体图标 -->
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" /></noscript>
+  
+  <!-- 优化: 延迟加载非关键CSS -->
+  <link rel="preload" as="style" href="style.css" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="style.css" /></noscript>
+  
+  <!-- 优化: 优化字体加载 -->
+  <!-- Google Fonts - Cairo -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
   <!-- Search Engine Optimization by Rank Math - https://rankmath.com/ -->
   <title>OPK Hub | Online Payment Key Hub</title>
@@ -34,8 +78,12 @@
   <meta name="twitter:title" content="opkpay | Online Payment Key Hub" />
   <!-- /Rank Math WordPress SEO plugin -->
 
+  <!-- 优化: 改进DNS预取 -->
   <link rel="dns-prefetch" href="//www.googletagmanager.com" />
-  <link rel="stylesheet" id="wp-block-library-css" href="static/css/style.min.css" type="text/css" media="all" />
+  <!-- 优化: 延迟加载非关键CSS -->
+  <link rel="preload" as="style" href="static/css/style.min.css" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="static/css/style.min.css" /></noscript>
+  
   <style id="classic-theme-styles-inline-css" type="text/css">
     /*! This file is auto-generated */
 
@@ -55,10 +103,16 @@
       text-decoration: none;
     }
   </style>
-  <link rel="stylesheet" id="oxygen-aos-css" href="static/css/aos.css" type="text/css" media="all" />
-  <link rel="stylesheet" id="oxygen-css" href="static/css/oxygen.css" type="text/css" media="all" />
-  <link rel="stylesheet" id="tp-custom-functionality-bbg-css" href="static/css/custom.css"
-    type="text/css" media="all" />
+  
+  <!-- 优化: 延迟加载非关键CSS -->
+  <link rel="preload" as="style" href="static/css/aos.css" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="static/css/aos.css" /></noscript>
+  
+  <link rel="preload" as="style" href="static/css/oxygen.css" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="static/css/oxygen.css" /></noscript>
+  
+  <link rel="preload" as="style" href="static/css/custom.css" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="static/css/custom.css" /></noscript>
   <style id="wpgb-head-inline-css" type="text/css">
     .wp-grid-builder:not(.wpgb-template),
     .wpgb-facet {
@@ -97,19 +151,18 @@
     }
   </style>
 
-  <script type="text/javascript" src="static/js/aos.js" id="oxygen-aos-js"></script>
-  <script type="text/javascript" src="static/js/jquery.min.js" id="jquery-core-js"></script>
-  <script type="text/javascript" src="static/js/tp-custom-functionality-bbg-public.js"
-    id="tp-custom-functionality-bbg-js"></script>
+  <!-- jQuery作为基础库需要同步加载，因为许多内联脚本依赖它 -->
+  <script type="text/javascript" src="static/js/jquery.min.js"></script>
+  <!-- 其他非关键JS可以延迟加载 -->
+  <script type="text/javascript" src="static/js/aos.js" defer></script>
+  <script type="text/javascript" src="static/js/tp-custom-functionality-bbg-public.js" defer></script>
 
-  <!-- Google tag (gtag.js) by linsa-->
+  <!-- 优化: 异步加载Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-VKJ957XYL2"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-VKJ957XYL2');
+    // 最小化内联脚本
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+    gtag('js',new Date());gtag('config','G-VKJ957XYL2');
   </script>
 
   <!-- Google tag (gtag.js) snippet added by Site Kit -->
@@ -158,8 +211,7 @@
     <div id="_header_row-3-13" class="oxygen-hide-in-sticky oxygen-hide-in-overlay oxy-header-row darkNav">
       <div class="oxy-header-container">
         <div id="_header_left-4-13" class="oxy-header-left">
-          <a id="link-262-13" class="ct-link" href=""><img id="image-5-13" alt="" src="static/picture/logo-w.png"
-              class="ct-image" srcset="" sizes="(max-width: 0px) 100vw, 0px" /></a>
+          <a id="link-262-13" class="ct-link" href=""><img id="image-5-13" alt="OPK Logo" src="static/picture/logo-w.png" loading="lazy" class="ct-image" srcset="" sizes="(max-width: 0px) 100vw, 0px" /></a>
         </div>
         <div id="_header_center-6-13" class="oxy-header-center"></div>
         <div id="_header_right-7-13" class="oxy-header-right">
@@ -226,8 +278,7 @@
     <div id="_header_row-945-13" class="oxygen-show-in-sticky-only oxy-header-row">
       <div class="oxy-header-container">
         <div id="_header_left-946-13" class="oxy-header-left">
-          <a id="link-947-13" class="ct-link" href=""><img id="image-948-13" alt="" src="static/picture/Logo.png"
-              class="ct-image" srcset="" sizes="(max-width: 0px) 100vw, 0px" /></a>
+          <a id="link-947-13" class="ct-link" href=""><img id="image-948-13" alt="OPK Logo" src="static/picture/Logo.png" loading="lazy" class="ct-image" srcset="" sizes="(max-width: 0px) 100vw, 0px" /></a>
         </div>
         <div id="_header_center-949-13" class="oxy-header-center"></div>
         <div id="_header_right-950-13" class="oxy-header-right">
@@ -707,13 +758,21 @@
         <!-- Contact Information -->
         <div style="flex: 1; min-width: 300px;">
           <h3 style="font-size: 24px; margin-bottom: 20px; color: white;">Contact Us</h3>
+          <div style="margin-bottom: 15px; display: none; align-items: flex-start;">
+            <svg class="w-5 h-5 mr-3 mt-1 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+            <p>88 Ke Yuan Road, Zhangjiang Hi-Tech Park, Pudong New District, Shanghai</p>
+          </div>
+          <div style="margin-bottom: 15px; display: none; align-items: center;">
+            <svg class="w-5 h-5 mr-3 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            <p>400-888-xxxxx</p>
+          </div>
           <div style="margin-bottom: 15px; display: flex; align-items: center;">
             <svg class="w-5 h-5 mr-3 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
             <p id="contact-email">service@opkhub.com</p>
           </div>
           <div style="display: flex; align-items: center;">
             <svg class="w-5 h-5 mr-3 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            <p>Monday to Friday: 9:00-18:00</p>
+            <p>Monday to Friday: 09:00-18:00(UTC+8)</p>
           </div>
         </div>
       </div>
@@ -1057,28 +1116,34 @@
     }
   </script>
 
-  <script type="text/javascript" src="static/js/accessible-megamenu.js" id="extras_megamenu-js"></script>
-  <script type="text/javascript" src="static/js/megamenu-init.js" id="extras_megamenu-init-js"></script>
-  <script type="text/javascript" src="static/js/unslider-min.js" id="oxygen-unslider-js"></script>
-  <script type="text/javascript" src="static/js/jquery.event.move.js" id="oxygen-event-move-js"></script>
-  <script type="text/javascript" src="static/js/jquery.event.swipe.js" id="oxygen-event-swipe-js"></script>
-  <script type="text/javascript" src="static/js/email.min.js" id="email-min-js"></script>
+  <script type="text/javascript" src="static/js/accessible-megamenu.js" defer></script>
+  <script type="text/javascript" src="static/js/megamenu-init.js" defer></script>
+  <script type="text/javascript" src="static/js/unslider-min.js" defer></script>
+  <script type="text/javascript" src="static/js/jquery.event.move.js" defer></script>
+  <script type="text/javascript" src="static/js/jquery.event.swipe.js" defer></script>
+  <!-- emailjs需要在使用前加载，不使用defer -->
+  <script type="text/javascript" src="static/js/email.min.js"></script>
   <script type="text/javascript">
     ; (function () {
       emailjs.init('BIdh-ZJnVJ8UADxIH') // EmailJS 用户ID
     })()
   </script>
 
-  <script type="text/javascript" src="static/js/inert.js" id="extras-inert-js"></script>
-  <script type="text/javascript" src="static/js/offcanvas-init.js" id="extras-offcanvas-js"></script>
-  <script type="text/javascript" src="static/js/gridbuildersupport.js" id="gridbuildersupport-js"></script>
-  <script type="text/javascript" id="ct-footer-js">
-    jQuery('.faq-header').attr({ 'data-aos-enable': 'true' })
-    AOS.init({
-      disable: window.innerWidth < 767,
-    })
+  <script type="text/javascript" src="static/js/inert.js" defer></script>
+  <script type="text/javascript" src="static/js/offcanvas-init.js" defer></script>
+  <script type="text/javascript" src="static/js/gridbuildersupport.js" defer></script>
+  <script type="text/javascript">
+    // 确保在AOS加载后初始化
+    window.addEventListener('load', function() {
+      if (typeof AOS !== 'undefined') {
+        jQuery('.faq-header').attr({ 'data-aos-enable': 'true' })
+        AOS.init({
+          disable: window.innerWidth < 767,
+        })
 
-    jQuery('body').addClass('oxygen-aos-enabled')
+        jQuery('body').addClass('oxygen-aos-enabled')
+      }
+    });
   </script>
   <!-- /WP_FOOTER -->
   <script type="text/javascript">
